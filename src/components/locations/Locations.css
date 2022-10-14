@@ -1,0 +1,11 @@
+.locations-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.location {
+    padding: 1rem;
+    margin: 0.6rem;
+    border: 2px solid goldenrod;
+    background-color: aquamarine;
+}
