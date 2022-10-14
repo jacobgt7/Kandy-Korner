@@ -1,0 +1,17 @@
+.products {
+    display: flex;
+    flex-direction: column;
+}
+
+.product {
+    padding: 1rem;
+    margin: 0.5rem;
+    border: 1px solid green;
+    background-color: pink;
+    box-shadow: 2px 3px 2px;
+}
+
+button {
+    margin: 0.3rem;
+    box-shadow: 3px 4px 3px;
+}
