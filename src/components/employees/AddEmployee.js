@@ -21,14 +21,14 @@ export const AddEmployee = () => {
         }
     )
 
-    const [locations, setLocations] = useState([])
+    const [stores, setStores] = useState([])
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/locations")
+            fetch("http://localhost:8088/stores")
                 .then(res => res.json())
-                .then(locationsData => {
-                    setLocations(locationsData)
+                .then(storesData => {
+                    setStores(storesData)
                 })
         },
         []
@@ -40,10 +40,30 @@ export const AddEmployee = () => {
         setUserChoices(copy)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
+        let fetchOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userChoices)
+        }
 
+        await fetch("http://localhost:8088/users", fetchOptions)
+            .then(res => res.json())
+            .then(userObj => {
+                employeeChoices.userId = userObj.id
+            })
+
+        fetchOptions.body = JSON.stringify(employeeChoices)
+
+        await fetch("http://localhost:8088/employees", fetchOptions)
+            .then(res => res.json())
+            .then(() => {
+                navigate("/employees")
+            })
     }
 
     return <>
@@ -73,10 +93,10 @@ export const AddEmployee = () => {
                             setEmployeeChoices(copy)
                         }
                     }>
-                        <option value={0}>Select a location...</option>
+                        <option value={0}>Select a store...</option>
                         {
-                            locations.map(
-                                location => <option value={location.id} key={`location--${location.id}`}>{location.address}</option>
+                            stores.map(
+                                store => <option value={store.id} key={`store--${store.id}`}>{store.address}</option>
                             )
                         }
                     </select>
@@ -96,7 +116,7 @@ export const AddEmployee = () => {
                 </label>
             </fieldset>
 
-            <button>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
         </form>
     </>
 }

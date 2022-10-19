@@ -1,4 +1,4 @@
-import { Locations } from "../locations/Locations"
+import { Stores } from "../stores/Stores"
 import { Routes, Route, Outlet } from "react-router-dom"
 import { Products } from "../products/Products"
 import { AddProduct } from "../products/AddProduct"

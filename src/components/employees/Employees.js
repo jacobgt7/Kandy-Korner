@@ -8,7 +8,7 @@ export const Employees = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/employees?_expand=user")
+            fetch("http://localhost:8088/employees?_expand=user&_expand=store")
                 .then(res => res.json())
                 .then(employeesData => {
                     setEmployees(employeesData)
@@ -32,7 +32,7 @@ export const Employees = () => {
                     employee => {
                         return <div className="employee" key={`employee--${employee.id}`}>
                             <h3>{employee?.user?.name}</h3>
-                            <div>Store {employee.storeId}</div>
+                            <div>Works at: {employee?.store?.address}</div>
                             <div>Email: {employee?.user?.email}</div>
                         </div>
                     }
