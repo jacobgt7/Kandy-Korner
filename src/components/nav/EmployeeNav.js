@@ -13,13 +13,16 @@ export const EmployeeNav = () => {
                 }}>Logout</Link>
             </li>
             <li>
-                <Link className="navbar__link" to="/locations">Locations</Link>
+                <Link className="navbar__link" to="/stores">Store Locations</Link>
             </li>
             <li>
                 <Link className="navbar__link" to="/products">Products</Link>
             </li>
             <li>
                 <Link className="navbar__link" to="/employees">Employees</Link>
+            </li>
+            <li>
+                <Link className="navbar__link" to="/customers">Customers</Link>
             </li>
 
 
